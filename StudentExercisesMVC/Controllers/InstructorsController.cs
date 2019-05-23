@@ -245,6 +245,7 @@ namespace StudentExercisesMVC.Controllers
                         cmd.CommandText = @"DELETE FROM Instructor WHERE Id = @id";
                         cmd.Parameters.Add(new SqlParameter("@id", id));
 
+                        int rowsAffected = cmd.ExecuteNonQuery();
                         return RedirectToAction(nameof(Index));
                     }
                 }
@@ -252,7 +253,7 @@ namespace StudentExercisesMVC.Controllers
             }
             catch
             {
-                return View();
+                return RedirectToAction(nameof(Details), new { id = id });
             }
         }
     }
