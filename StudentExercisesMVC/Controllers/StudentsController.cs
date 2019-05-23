@@ -126,9 +126,9 @@ namespace StudentExercisesMVC.Controllers
                 conn.Open();
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO Student (FirstName, LastName, SlackHandle, CohortId)         
-                                         OUTPUT INSERTED.Id                                                       
-                                         VALUES (@firstName, @lastName, @handle, @cId)";
+                    cmd.CommandText = @"INSERT INTO Student (FirstName, LastName, SlackHandle, CohortId)
+                                            OUTPUT INSERTED.Id
+                                            VALUES (@firstName, @lastName, @handle, @cId)";
                     cmd.Parameters.Add(new SqlParameter("@firstName", model.Student.FirstName));
                     cmd.Parameters.Add(new SqlParameter("@lastName", model.Student.LastName));
                     cmd.Parameters.Add(new SqlParameter("@handle", model.Student.SlackHandle));
@@ -238,12 +238,7 @@ namespace StudentExercisesMVC.Controllers
                         cmd.CommandText = @"DELETE FROM Student WHERE Id = @id";
                         cmd.Parameters.Add(new SqlParameter("@id", id));
 
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
                             return RedirectToAction(nameof(Index));
-                        }
-                        throw new Exception("No rows affected");
                     }
                 }
 
