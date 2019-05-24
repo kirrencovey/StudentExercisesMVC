@@ -42,8 +42,7 @@ namespace StudentExercisesMVC.Controllers
                                 s.LastName,
                                 s.SlackHandle,
                                 s.CohortId
-                            FROM Student s
-                        ";
+                            FROM Student s";
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     List<Student> students = new List<Student>();
